@@ -9,15 +9,11 @@ pipeline {
         stage('SCM') {
             steps {
                 script {
-                def userInput = input(
-                id: 'userInput', message: "Some important question?", parameters: [
-                booleanParam(defaultValue: false, description: 'really?', name: 'myValue')
-                ])
-                if (userInput) {
-                    echo "approve ********"
-                } else {
-                    echo "skip **********"
-                }
+                    try {
+                        input 'Deploy to UAT?'
+                    } catch (err) {
+                        currentBuild.result = 'SUCCESS'
+                    }
                 }
             }
         }
