@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('SCM') {
             userInput = input(
-                message: "Ready to deploy?", parameters: [
+                id: 'userInput',message: "Ready to deploy?", parameters: [
                 booleanParam(defaultValue: false, name: 'inputdev')
             ])
         }
