@@ -9,17 +9,11 @@ pipeline {
         stage('SCM') {
             steps {
                 script {
-                def  userInput = input(
+                def userInput = input(
                 id: 'userInput', message: "Some important question?", parameters: [
                 booleanParam(defaultValue: false, description: 'really?', name: 'myValue')
                 ])
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    if (userInput) {
+                if (userInput) {
                     echo "approve ********"
                 } else {
                     echo "skip **********"
