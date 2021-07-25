@@ -9,8 +9,8 @@ pipeline {
         stage('SCM') {
             steps {
                 userInput = input(
-                id: 'userInput',message: "Ready to deploy?", parameters: [
-                booleanParam(defaultValue: false, name: 'inputdev')
+                id: 'userInput', message: "Some important question?", parameters: [
+                booleanParam(defaultValue: false, description: 'really?', name: 'myValue')
                 ])
             }
         }
