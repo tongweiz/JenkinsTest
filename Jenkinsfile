@@ -7,16 +7,20 @@ pipeline {
 
     stages {
         stage('SCM') {
-            userInput = input(
+            steps {
+                userInput = input(
                 id: 'userInput',message: "Ready to deploy?", parameters: [
                 booleanParam(defaultValue: false, name: 'inputdev')
-            ])
+                ])
+            }
         }
         stage('Deploy') {
-            if (userInput) {
-                echo "approve ********"
-            } else {
-                echo "skip **********"
+            steps {
+                if (userInput) {
+                    echo "approve ********"
+                } else {
+                    echo "skip **********"
+                }
             }
         }
     }
