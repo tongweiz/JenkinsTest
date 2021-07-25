@@ -18,10 +18,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                if (userInput) {
+                script {
+                    if (userInput) {
                     echo "approve ********"
                 } else {
                     echo "skip **********"
+                }
                 }
             }
         }
